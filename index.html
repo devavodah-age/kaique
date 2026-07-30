@@ -1,744 +1,1047 @@
+⁠ html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaique Motos - Peças e Acessórios</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome (Ícones) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- RESETS E BASE --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        :root {
-            --orange: #FF5500;
-            --green: #00B140;
-            --green-hover: #009637;
-            --dark-bg: #121212;
-            --black-bg: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --light-bg: #F5F5F7;
-            --text-dark: #1D1D1F;
-            --text-muted: #86868B;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .highlight-orange {
-            color: var(--orange);
-        }
-
-        /* --- HEADER / NAVBAR --- */
-        header {
-            background-color: #0d0d0d;
-            padding: 15px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #222;
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 22px;
-            font-weight: 900;
-            color: #fff;
-            font-style: italic;
-        }
-
-        .logo-box {
-            background-color: var(--orange);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            color: #ccc;
-            font-size: 13px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--orange);
-        }
-
-        .btn-header-whatsapp {
-            background-color: var(--green);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .btn-header-whatsapp:hover {
-            background-color: var(--green-hover);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.2) 100%), 
-                        url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-            padding: 60px 5%;
-            min-height: 550px;
-            display: flex;
-            align-items: center;
-            color: #fff;
-        }
-
-        .hero-content {
-            max-width: 580px;
-        }
-
-        .hero-title {
-            font-size: 46px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .hero-subtitle {
-            font-size: 15px;
-            color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 30px;
-        }
-
-        .hero-features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .feature-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            background: rgba(255, 85, 0, 0.1);
-            border: 1px solid rgba(255, 85, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--orange);
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .feature-text {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #ddd;
-            line-height: 1.2;
-        }
-
-        .btn-hero-cta {
-            background-color: var(--green);
-            color: #fff;
-            padding: 16px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 177, 64, 0.3);
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .btn-hero-cta:hover {
-            background-color: var(--green-hover);
-            transform: translateY(-2px);
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 12px;
-        }
-
-        .security-badge i {
-            color: #f1c40f;
-        }
-
-        /* --- CATEGORIAS --- */
-        .categories {
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            margin-bottom: 35px;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .category-card {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-
-        .category-img {
-            height: 80px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .category-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: #222;
-            text-transform: uppercase;
-        }
-
-        .btn-outline-orange {
-            border: 1px solid var(--orange);
-            color: var(--orange);
-            background: transparent;
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            transition: all 0.2s;
-        }
-
-        .btn-outline-orange:hover {
-            background-color: var(--orange);
-            color: #fff;
-        }
-
-        /* --- VANTAGENS (POR QUE COMPRAR) --- */
-        .why-us {
-            background-color: var(--dark-bg);
-            color: #fff;
-            padding: 40px 5%;
-        }
-
-        .why-us-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .why-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            max-width: 220px;
-        }
-
-        .why-item i {
-            font-size: 24px;
-            color: var(--orange);
-        }
-
-        .why-item p {
-            font-size: 12px;
-            font-weight: 600;
-            color: #ccc;
-            line-height: 1.3;
-        }
-
-        /* --- LOJAS FÍSICAS --- */
-        .stores {
-            padding: 60px 5%;
-        }
-
-        .stores-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .store-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            align-items: center;
-        }
-
-        .store-img {
-            width: 120px;
-            height: 110px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .store-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-size: 11px;
-            color: #555;
-        }
-
-        .store-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: #111;
-        }
-
-        .store-info div {
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
-        }
-
-        .store-info i {
-            color: var(--orange);
-            margin-top: 2px;
-        }
-
-        /* --- CTA BANNER --- */
-        .cta-banner {
-            background-color: var(--black-bg);
-            color: #fff;
-            padding: 30px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid #222;
-        }
-
-        .cta-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .cta-left i.fa-whatsapp {
-            font-size: 50px;
-            color: var(--green);
-        }
-
-        .cta-text h3 {
-            font-size: 20px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .cta-text p {
-            font-size: 13px;
-            color: #aaa;
-            margin-top: 2px;
-        }
-
-        .btn-green-large {
-            background-color: var(--green);
-            color: white;
-            padding: 14px 24px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .btn-green-large:hover {
-            background-color: var(--green-hover);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #050505;
-            color: #888;
-            padding: 25px 5%;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid #1a1a1a;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .footer-features {
-            display: flex;
-            gap: 30px;
-        }
-
-        .footer-feat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-feat-item i {
-            font-size: 18px;
-            color: #fff;
-        }
-
-        .footer-feat-text {
-            line-height: 1.2;
-        }
-
-        .footer-feat-text strong {
-            color: #fff;
-            display: block;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-
-        .social-icon:hover {
-            background: var(--orange);
-        }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 850px) {
-            .nav-menu {
-                display: none; /* Oculta menu superior em telas menores */
-            }
-
-            .hero-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero-title {
-                font-size: 32px;
-            }
-
-            .cta-banner {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-            }
-
-            .cta-left {
-                flex-direction: column;
-            }
-
-            .why-us-grid {
-                justify-content: center;
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-features {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Encontre peças, acessórios, pneus, óleos e baterias para sua moto na Kaique Motos."
+  />
+
+  <title>Kaique Motos | Peças e Acessórios para Motos</title>
+
+  <style>
+    :root {
+      --black: #080808;
+      --dark: #111111;
+      --dark-soft: #181818;
+      --orange: #ff5a00;
+      --orange-dark: #d94d00;
+      --white: #ffffff;
+      --gray: #b8b8b8;
+      --light-gray: #f4f4f4;
+      --green: #18b94c;
+      --green-dark: #10943b;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* CABEÇALHO */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-content {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-symbol {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--white);
+      transform: skew(-4deg);
+    }
+
+    .brand-name {
+      font-size: 24px;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--orange);
+      letter-spacing: 1.4px;
+    }
+
+    /* BOTÕES */
+
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 14px 24px;
+      border: 0;
+      border-radius: 9px;
+      background: linear-gradient(
+        135deg,
+        var(--green),
+        var(--green-dark)
+      );
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(24, 185, 76, 0.2);
+      transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .whatsapp-icon {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 0 72px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.98) 0%,
+          rgba(0, 0, 0, 0.88) 48%,
+          rgba(0, 0, 0, 0.44) 100%
+        ),
+        url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 4px;
+      background: var(--orange);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      max-width: 680px;
+      margin-bottom: 20px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.98;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero-description {
+      max-width: 610px;
+      margin-bottom: 28px;
+      color: #e2e2e2;
+      font-size: 19px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 28px 0 34px;
+    }
+
+    .benefit {
+      min-height: 92px;
+      padding: 16px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(20, 20, 20, 0.76);
+    }
+
+    .benefit strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--orange);
+      font-size: 23px;
+    }
+
+    .benefit span {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .hero .whatsapp-button {
+      min-width: 320px;
+      min-height: 62px;
+      font-size: 18px;
+    }
+
+    .secure-text {
+      margin-top: 12px;
+      color: #d7d7d7;
+      font-size: 13px;
+    }
+
+    /* SEÇÕES */
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-light {
+      background: var(--light-gray);
+      color: #111111;
+    }
+
+    .section-dark {
+      background: var(--dark);
+    }
+
+    .section-title {
+      margin-bottom: 12px;
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      color: var(--orange);
+    }
+
+    .section-subtitle {
+      max-width: 700px;
+      margin: 0 auto 38px;
+      color: #666666;
+      font-size: 17px;
+      text-align: center;
+    }
+
+    /* CATEGORIAS */
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      display: flex;
+      min-height: 178px;
+      padding: 22px 16px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 1px solid #e1e1e1;
+      border-radius: 14px;
+      background: var(--white);
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--orange);
+    }
+
+    .category-icon {
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff1e8;
+      color: var(--orange);
+      font-size: 31px;
+    }
+
+    .category-card strong {
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .category-card small {
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .center-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    /* DIFERENCIAIS */
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 38px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--border);
+    }
+
+    .trust-item {
+      min-height: 160px;
+      padding: 28px 20px;
+      background: var(--dark-soft);
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--orange);
+      font-size: 34px;
+    }
+
+    .trust-item h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .trust-item p {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* LOJAS */
+
+    .stores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 38px;
+    }
+
+    .store-card {
+      padding: 28px;
+      border: 1px solid #e2e2e2;
+      border-radius: 15px;
+      background: var(--white);
+      color: #111111;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .store-card h3 {
+      margin-bottom: 12px;
+      color: var(--orange);
+      font-size: 23px;
+    }
+
+    .store-card p {
+      margin-bottom: 8px;
+      color: #4a4a4a;
+    }
+
+    .store-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 20px;
+      background: #fff1e8;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* CTA FINAL */
+
+    .final-cta {
+      padding: 66px 0;
+      background:
+        radial-gradient(
+          circle at 20% 50%,
+          rgba(255, 90, 0, 0.19),
+          transparent 36%
+        ),
+        var(--black);
+    }
+
+    .final-cta-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .final-cta h2 {
+      margin-bottom: 10px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .final-cta h2 span {
+      color: var(--orange);
+    }
+
+    .final-cta p {
+      color: var(--gray);
+      font-size: 17px;
+    }
+
+    /* RODAPÉ */
+
+    .footer {
+      padding: 26px 0;
+      border-top: 1px solid var(--border);
+      background: #030303;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #9c9c9c;
+      font-size: 13px;
+    }
+
+    /* BOTÃO FLUTUANTE */
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1001;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      font-size: 28px;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 900px) {
+      .benefits,
+      .categories-grid,
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .final-cta-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        background:
+          linear-gradient(
+            rgba(0, 0, 0, 0.84),
+            rgba(0, 0, 0, 0.95)
+          ),
+          url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80")
+          center / cover no-repeat;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .header-content {
+        min-height: 66px;
+      }
+
+      .header .whatsapp-button {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+
+      .brand-symbol {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-name {
+        font-size: 19px;
+      }
+
+      .hero {
+        padding: 58px 0 54px;
+      }
+
+      .hero-description {
+        font-size: 17px;
+      }
+
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero .whatsapp-button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .categories-grid,
+      .trust-grid,
+      .stores-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        min-height: 130px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .final-cta .whatsapp-button {
+        width: 100%;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- NAV BAR -->
-    <header>
-        <div class="logo">
-            <span class="logo-box">K1</span> KAIQUE <span style="font-weight: 300; font-size: 14px; margin-left: -4px;">MOTOS</span>
+  <!-- CABEÇALHO -->
+
+  <header class="header">
+    <div class="container header-content">
+
+      <a href="#" class="brand" aria-label="Kaique Motos">
+        <div class="brand-symbol">K</div>
+
+        <div class="brand-name">
+          KAIQUE
+          <span>MOTOS</span>
         </div>
-        
-        <ul class="nav-menu">
-            <li><a href="#"><i class="fa-solid fa-gear"></i> Peças</a></li>
-            <li><a href="#"><i class="fa-solid fa-gears"></i> Acessórios</a></li>
-            <li><a href="#"><i class="fa-regular fa-circle-dot"></i> Pneus</a></li>
-            <li><a href="#"><i class="fa-solid fa-oil-can"></i> Óleos</a></li>
-            <li><a href="#"><i class="fa-solid fa-battery-full"></i> Baterias</a></li>
-            <li><a href="#"><i class="fa-solid fa-helmet-safety"></i> Capacetes</a></li>
-        </ul>
+      </a>
 
-        <a href="https://wa.me/5575999113337" target="_blank" class="btn-header-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i> FALAR NO WHATSAPP
-        </a>
-    </header>
+      <a
+        href="#"
+        class="whatsapp-button whatsapp-link"
+        data-category="Atendimento geral"
+      >
+        <span class="whatsapp-icon">☎</span>
+        Falar no WhatsApp
+      </a>
 
-    <!-- HERO SECTION -->
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
     <section class="hero">
+      <div class="container">
+
         <div class="hero-content">
-            <h1 class="hero-title">
-                TUDO PARA <br>
-                <span class="highlight-orange">SUA MOTO</span> <br>
-                VOCÊ ENCONTRA AQUI!
-            </h1>
-            
-            <p class="hero-subtitle">
-                Mais de 5.000 itens em estoque para sua moto. <br>
-                Atendimento rápido, entrega ágil e o melhor preço da região.
-            </p>
 
-            <div class="hero-features">
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <span class="feature-text">Atendimento Rápido</span>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fa-solid fa-box-open"></i></div>
-                    <span class="feature-text">+5.000 Itens em Estoque</span>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fa-solid fa-store"></i></div>
-                    <span class="feature-text">Duas Lojas Físicas</span>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                    <span class="feature-text">Entrega Rápida</span>
-                </div>
+          <div class="eyebrow">
+            Peças e acessórios para motos
+          </div>
+
+          <h1>
+            A peça certa para
+            <span>sua moto</span>
+            você encontra aqui
+          </h1>
+
+          <p class="hero-description">
+            Mais de 5.000 itens em estoque, atendimento rápido e duas
+            lojas para atender você em Marcionílio Souza e Barra da
+            Estiva.
+          </p>
+
+          <div class="benefits">
+
+            <div class="benefit">
+              <strong>Rápido</strong>
+              <span>Atendimento pelo WhatsApp</span>
             </div>
 
-            <a href="https://wa.me/5575999113337" target="_blank" class="btn-hero-cta">
-                <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i>
-                Consultar Peça no WhatsApp
-            </a>
-
-            <div class="security-badge">
-                <i class="fa-solid fa-lock"></i> Atendimento seguro e rápido
+            <div class="benefit">
+              <strong>+5 mil</strong>
+              <span>Itens disponíveis</span>
             </div>
+
+            <div class="benefit">
+              <strong>2 lojas</strong>
+              <span>Na região</span>
+            </div>
+
+            <div class="benefit">
+              <strong>7 anos</strong>
+              <span>De experiência</span>
+            </div>
+
+          </div>
+
+          <a
+            href="#"
+            class="whatsapp-button whatsapp-link"
+            data-category="Consulta de peça"
+          >
+            <span class="whatsapp-icon">☎</span>
+            Consultar peça no WhatsApp
+          </a>
+
+          <p class="secure-text">
+            Atendimento rápido, seguro e personalizado.
+          </p>
+
         </div>
+      </div>
     </section>
 
-    <!-- CATEGORIAS DE PRODUTOS -->
-    <section class="categories">
-        <h2 class="section-title">O QUE VOCÊ <span class="highlight-orange">PROCURA?</span></h2>
+    <!-- CATEGORIAS -->
 
-        <div class="category-grid">
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&q=80&w=200" alt="Peças de Motor" class="category-img">
-                <span class="category-title">Peças de Motor</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1589307735340-96f3c1a3b508?auto=format&fit=crop&q=80&w=200" alt="Transmissão" class="category-img">
-                <span class="category-title">Transmissão</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1600706432502-7788f533a593?auto=format&fit=crop&q=80&w=200" alt="Pneus" class="category-img">
-                <span class="category-title">Pneus</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=200" alt="Óleos" class="category-img">
-                <span class="category-title">Óleos</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=200" alt="Baterias" class="category-img">
-                <span class="category-title">Baterias</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=200" alt="Capacetes" class="category-img">
-                <span class="category-title">Capacetes</span>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=200" alt="Acessórios" class="category-img">
-                <span class="category-title">Acessórios</span>
-            </div>
+    <section class="section section-light">
+      <div class="container">
+
+        <h2 class="section-title">
+          O que você <span>procura?</span>
+        </h2>
+
+        <p class="section-subtitle">
+          Escolha uma categoria e fale diretamente com nossa equipe.
+        </p>
+
+        <div class="categories-grid">
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Peças de motor"
+          >
+            <div class="category-icon">⚙</div>
+            <strong>Peças de motor</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Kit transmissão"
+          >
+            <div class="category-icon">⛓</div>
+            <strong>Transmissão</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Pneus"
+          >
+            <div class="category-icon">◉</div>
+            <strong>Pneus</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Óleos"
+          >
+            <div class="category-icon">◆</div>
+            <strong>Óleos</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Baterias"
+          >
+            <div class="category-icon">▣</div>
+            <strong>Baterias</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Capacetes"
+          >
+            <div class="category-icon">◒</div>
+            <strong>Capacetes</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Acessórios"
+          >
+            <div class="category-icon">✦</div>
+            <strong>Acessórios</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
+          <a
+            href="#"
+            class="category-card whatsapp-link"
+            data-category="Outros produtos"
+          >
+            <div class="category-icon">+</div>
+            <strong>Outros produtos</strong>
+            <small>Consultar no WhatsApp</small>
+          </a>
+
         </div>
 
-        <a href="https://wa.me/5575999113337" target="_blank" class="btn-outline-orange">
-            <i class="fa-brands fa-whatsapp"></i> Ver todos os produtos no WhatsApp
-        </a>
-    </section>
-
-    <!-- POR QUE COMPRAR -->
-    <section class="why-us">
-        <div class="why-us-grid">
-            <div class="why-item">
-                <i class="fa-solid fa-ribbon"></i>
-                <p>Produtos originais e paralelos</p>
-            </div>
-            <div class="why-item">
-                <i class="fa-solid fa-users"></i>
-                <p>Atendimento especializado</p>
-            </div>
-            <div class="why-item">
-                <i class="fa-solid fa-star"></i>
-                <p>Melhores marcas do mercado</p>
-            </div>
-            <div class="why-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <p>Duas lojas para melhor te atender</p>
-            </div>
-            <div class="why-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <p>Compra segura e confiável</p>
-            </div>
+        <div class="center-button">
+          <a
+            href="#"
+            class="whatsapp-button whatsapp-link"
+            data-category="Catálogo completo"
+          >
+            <span class="whatsapp-icon">☎</span>
+            Ver produtos no WhatsApp
+          </a>
         </div>
+
+      </div>
     </section>
 
-    <!-- NOSSAS LOJAS -->
-    <section class="stores">
-        <h2 class="section-title" style="text-align: center;">NOSSAS <span class="highlight-orange">LOJAS</span></h2>
+    <!-- DIFERENCIAIS -->
+
+    <section class="section section-dark">
+      <div class="container">
+
+        <h2 class="section-title">
+          Por que comprar na <span>Kaique Motos?</span>
+        </h2>
+
+        <div class="trust-grid">
+
+          <div class="trust-item">
+            <strong>+5.000</strong>
+            <h3>Itens em estoque</h3>
+            <p>Peças e acessórios para diferentes modelos de motos.</p>
+          </div>
+
+          <div class="trust-item">
+            <strong>02</strong>
+            <h3>Lojas físicas</h3>
+            <p>Atendimento em Marcionílio Souza e Barra da Estiva.</p>
+          </div>
+
+          <div class="trust-item">
+            <strong>7 anos</strong>
+            <h3>De mercado</h3>
+            <p>Experiência e conhecimento no segmento de motopeças.</p>
+          </div>
+
+          <div class="trust-item">
+            <strong>WhatsApp</strong>
+            <h3>Atendimento rápido</h3>
+            <p>Consulte preço, disponibilidade e condições de pagamento.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LOJAS -->
+
+    <section class="section section-light">
+      <div class="container">
+
+        <h2 class="section-title">
+          Nossas <span>lojas</span>
+        </h2>
+
+        <p class="section-subtitle">
+          Escolha a unidade mais próxima ou consulte pelo WhatsApp.
+        </p>
 
         <div class="stores-grid">
-            <!-- Loja 1 -->
-            <div class="store-card">
-                <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=300" alt="Loja Marcionílio Souza" class="store-img">
-                <div class="store-info">
-                    <span class="store-title">Marcionílio Souza - BA</span>
-                    <div><i class="fa-solid fa-location-dot"></i> <span>Av. Senhor do Bonfim, 337<br>Centro</span></div>
-                    <div><i class="fa-solid fa-phone"></i> <span>(75) 9 9911-3337</span></div>
-                    <div><i class="fa-regular fa-clock"></i> <span>Seg a Sex: 08h às 18h<br>Sáb: 08h às 12h</span></div>
-                </div>
-            </div>
 
-            <!-- Loja 2 -->
-            <div class="store-card">
-                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=300" alt="Loja Barra da Estiva" class="store-img">
-                <div class="store-info">
-                    <span class="store-title">Barra da Estiva - BA</span>
-                    <div><i class="fa-solid fa-location-dot"></i> <span>Rua dos Comerciários, S/N<br>Centro</span></div>
-                    <div><i class="fa-solid fa-phone"></i> <span>(77) 9 9855-0123</span></div>
-                    <div><i class="fa-regular fa-clock"></i> <span>Seg a Sex: 08h às 18h<br>Sáb: 08h às 12h</span></div>
-                </div>
-            </div>
+          <article class="store-card">
+            <div class="store-tag">Unidade 01</div>
+
+            <h3>Marcionílio Souza – BA</h3>
+
+            <p>
+              Peças, acessórios, pneus, óleos, baterias e produtos
+              para manutenção da sua moto.
+            </p>
+
+            <p>
+              <strong>Atendimento:</strong> consulte horários pelo WhatsApp.
+            </p>
+          </article>
+
+          <article class="store-card">
+            <div class="store-tag">Unidade 02</div>
+
+            <h3>Barra da Estiva – BA</h3>
+
+            <p>
+              Atendimento especializado e variedade de peças e
+              acessórios para motos.
+            </p>
+
+            <p>
+              <strong>Atendimento:</strong> consulte horários pelo WhatsApp.
+            </p>
+          </article>
+
         </div>
+
+      </div>
     </section>
 
-    <!-- CTA BANNER INFERIOR -->
-    <section class="cta-banner">
-        <div class="cta-left">
-            <i class="fa-brands fa-whatsapp"></i>
-            <div class="cta-text">
-                <h3>NÃO ENCONTROU A PEÇA?</h3>
-                <p><span class="highlight-orange" style="font-weight: 700;">NOSSA EQUIPE PROCURA PARA VOCÊ!</span><br>Fale agora no WhatsApp e receba seu orçamento.</p>
-            </div>
+    <!-- CTA FINAL -->
+
+    <section class="final-cta">
+      <div class="container final-cta-content">
+
+        <div>
+          <h2>
+            Não encontrou a <span>peça?</span>
+          </h2>
+
+          <p>
+            Informe o modelo e o ano da sua moto. Nossa equipe verifica
+            a disponibilidade para você.
+          </p>
         </div>
-        <a href="https://wa.me/5575999113337" target="_blank" class="btn-green-large">
-            <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> Falar com Especialista
+
+        <a
+          href="#"
+          class="whatsapp-button whatsapp-link"
+          data-category="Atendimento com especialista"
+        >
+          <span class="whatsapp-icon">☎</span>
+          Falar com especialista
         </a>
+
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="logo">
-            <span class="logo-box">K1</span> KAIQUE <span style="font-weight: 300; font-size: 12px; margin-left: -4px;">MOTOS</span>
-        </div>
+  </main>
 
-        <div class="footer-features">
-            <div class="footer-feat-item">
-                <i class="fa-solid fa-box"></i>
-                <div class="footer-feat-text">
-                    <strong>Peças e acessórios</strong>
-                    <span>para motos</span>
-                </div>
-            </div>
-            <div class="footer-feat-item">
-                <i class="fa-solid fa-cubes"></i>
-                <div class="footer-feat-text">
-                    <strong>+5.000 itens</strong>
-                    <span>à pronta entrega</span>
-                </div>
-            </div>
-            <div class="footer-feat-item">
-                <i class="fa-solid fa-headset"></i>
-                <div class="footer-feat-text">
-                    <strong>Atendimento rápido</strong>
-                    <span>pelo WhatsApp</span>
-                </div>
-            </div>
-        </div>
+  <!-- RODAPÉ -->
 
-        <div class="social-links">
-            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/5575999113337" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <div>
+        ©️ <span id="currentYear"></span> Kaique Motos.
+        Todos os direitos reservados.
+      </div>
+
+      <div>
+        Performance e tecnologia por Agência Avodah.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+
+  <a
+    href="#"
+    class="floating-whatsapp whatsapp-link"
+    data-category="Botão flutuante"
+    aria-label="Falar no WhatsApp"
+  >
+    ☎
+  </a>
+
+  <script>
+    /*
+      NÚMERO DO WHATSAPP
+
+      O número deve ser informado apenas com números:
+      código do país + DDD + telefone.
+
+      Exemplo:
+      5575991492056
+    */
+
+    const whatsappNumber = "5575991492056";
+
+    /*
+      Captura os parâmetros dos anúncios.
+
+      Exemplos:
+      ?utm_source=facebook
+      &utm_campaign=pneus
+      &utm_content=video01
+    */
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const trackingData = {
+      utmSource: urlParams.get("utm_source") || "direto",
+      utmMedium: urlParams.get("utm_medium") || "site",
+      utmCampaign: urlParams.get("utm_campaign") || "landing_page",
+      utmContent: urlParams.get("utm_content") || "nao_identificado",
+      adId: urlParams.get("ad_id") || "",
+      campaignId: urlParams.get("campaign_id") || ""
+    };
+
+    function createWhatsAppUrl(category) {
+      const message = `
+Olá! Vim pelo anúncio da Kaique Motos.
+
+Tenho interesse em: ${category}.
+
+Minha moto é:
+Modelo:
+Ano:
+
+Origem: ${trackingData.utmSource}
+Campanha: ${trackingData.utmCampaign}
+Criativo: ${trackingData.utmContent}
+      `.trim();
+
+      return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    }
+
+    document.querySelectorAll(".whatsapp-link").forEach((link) => {
+      const category =
+        link.dataset.category || "Atendimento geral";
+
+      link.href = createWhatsAppUrl(category);
+
+      link.addEventListener("click", () => {
+        /*
+          Aqui você poderá adicionar futuramente:
+
+          Meta Pixel
+          Google Analytics
+          Google Tag Manager
+          API própria
+        */
+
+        if (typeof window.dataLayer !== "undefined") {
+          window.dataLayer.push({
+            event: "whatsapp_click",
+            product_category: category,
+            utm_source: trackingData.utmSource,
+            utm_campaign: trackingData.utmCampaign,
+            utm_content: trackingData.utmContent
+          });
+        }
+      });
+    });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
