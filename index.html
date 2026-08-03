@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8" />
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','912547404676067');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=912547404676067&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 
   <meta
     name="description"
@@ -1040,6 +1051,16 @@
     const whatsappNumber = "5575991492056";
     const API_URL = 'https://horoscopo-api-production.up.railway.app/api/kaique/lead';
 
+    function getFbp() { return document.cookie.match(/_fbp=([^;]+)/)?.[1] || null; }
+    function getFbc() {
+      var fbc = document.cookie.match(/_fbc=([^;]+)/)?.[1];
+      if (!fbc) {
+        var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      }
+      return fbc || null;
+    }
+
     const urlParams   = new URLSearchParams(window.location.search);
     const UTM_SOURCE  = urlParams.get('utm_source')   || '';
     const UTM_CAMPAIGN = urlParams.get('utm_campaign') || '';
@@ -1108,7 +1129,13 @@
 
       document.getElementById('leadModal').classList.remove('active');
 
-      // Salva lead em background (não bloqueante)
+      // Dispara pixel Lead (browser)
+      var eventId = 'lead_' + Date.now();
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {}, { eventID: eventId });
+      }
+
+      // Salva lead em background + CAPI (não bloqueante)
       fetch(API_URL, {
         method: 'POST',
         keepalive: true,
@@ -1118,7 +1145,11 @@
           whatsapp: whatsapp,
           categoria: _modalCategory,
           utm_source: UTM_SOURCE,
-          utm_campaign: UTM_CAMPAIGN
+          utm_campaign: UTM_CAMPAIGN,
+          event_id: eventId,
+          fbp: getFbp(),
+          fbc: getFbc(),
+          user_agent: navigator.userAgent
         })
       }).catch(function () {});
 
