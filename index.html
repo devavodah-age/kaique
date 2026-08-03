@@ -1069,9 +1069,9 @@
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Máscara WhatsApp — só números, máx 11 dígitos
+    // Máscara WhatsApp — só números, máx 13 dígitos (com DDI)
     document.getElementById('leadWhatsApp').addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '').slice(0, 11);
+      this.value = this.value.replace(/\D/g, '').slice(0, 13);
     });
 
     function buildWaUrl(category, nome) {
