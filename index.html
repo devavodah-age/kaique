@@ -1075,7 +1075,11 @@
     });
 
     function buildWaUrl(category, nome) {
-      var msg = 'Olá! Vim pelo anúncio. Preciso de uma peça para minha moto.';
+      var msg = 'Olá!';
+      if (nome && nome.trim().length >= 2) {
+        msg += ' Sou ' + nome.trim() + ',';
+      }
+      msg += ' vim pelo anúncio. Preciso de uma peça para minha moto.';
       return 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
     }
 
