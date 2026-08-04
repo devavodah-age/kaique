@@ -1075,11 +1075,7 @@
     });
 
     function buildWaUrl(category, nome) {
-      var msg = 'Olá! Vim pelo anúncio da Kaique Motos.';
-      if (nome && nome.trim().length >= 2) {
-        msg += '\nMeu nome é: ' + nome.trim();
-      }
-      msg += '\nTenho interesse em: ' + category;
+      var msg = 'Olá! Vim pelo anúncio. Preciso de uma peça para minha moto.';
       return 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
     }
 
